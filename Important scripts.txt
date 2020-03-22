@@ -1,0 +1,16 @@
+ssh -X mmn9@buffet03.cc.gatech.edu
+scp -r martingale mmn9@buffet03.cc.gatech.edu:/home/mmn9/martingale/
+scp -r optimize_something mmn9@buffet03.cc.gatech.edu:/home/mmn9/optimize_something/
+Python martingale.py
+PYTHONPATH=../:. python indicators.py
+
+
+
+/home/mmn9/ML4T_2019Fall
+/home/mohitha/Storagemohitha/GaTech/CS-7646/Fall-2019/Temp_Folder
+
+scp -r strategy_learner mmn9@buffet03.cc.gatech.edu:/home/mmn9/ML4T_2019Fall/strategy_learner
+
+export TERM=xterm-color
+conda activate MLEnvironment
+conda deactivate
