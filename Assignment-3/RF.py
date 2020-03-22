@@ -31,9 +31,9 @@ def main():
     madelon_X = StandardScaler().fit_transform(madelon_X)
     character_X = StandardScaler().fit_transform(character_X)
 
-    clusters = [2, 5, 10, 15, 20, 25, 30, 35, 40]
-    dims = [2, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60]
-    dims2 = [2, 4, 6, 8, 10, 12, 14, 16]
+    # clusters = [2, 5, 10, 15, 20, 25, 30, 35, 40]
+    dim_red = [2, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60]
+    dims_red_s = [2, 4, 6, 8, 10, 12, 14, 16]
 
     # %% data for 1
 
@@ -49,7 +49,7 @@ def main():
 
     # %% Data for 2
     filtr = ImportanceSelect(rfc)
-    grid = {'filter__n': dims, 'NN__alpha': nn_reg, 'NN__hidden_layer_sizes': nn_arch}
+    grid = {'filter__n': dim_red, 'NN__alpha': nn_reg, 'NN__hidden_layer_sizes': nn_arch}
     mlp = MLPClassifier(activation='relu', max_iter=2000, early_stopping=True, random_state=5)
     pipe = Pipeline([('filter', filtr), ('NN', mlp)])
     gs = GridSearchCV(pipe, grid, verbose=10, cv=5)
@@ -58,7 +58,7 @@ def main():
     tmp = pd.DataFrame(gs.cv_results_)
     tmp.to_csv(out + 'Madelon dim red.csv')
 
-    grid = {'filter__n': dims2, 'NN__alpha': nn_reg, 'NN__hidden_layer_sizes': nn_arch}
+    grid = {'filter__n': dims_red_s, 'NN__alpha': nn_reg, 'NN__hidden_layer_sizes': nn_arch}
     mlp = MLPClassifier(activation='relu', max_iter=2000, early_stopping=True, random_state=5)
     pipe = Pipeline([('filter', filtr), ('NN', mlp)])
     gs = GridSearchCV(pipe, grid, verbose=10, cv=5)
