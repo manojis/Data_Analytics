@@ -1,8 +1,3 @@
-
-"""
-@author: ssunitha3
-
-"""
 import pandas as pd
 from sklearn.model_selection import train_test_split, GridSearchCV, ShuffleSplit
 from sklearn.metrics import accuracy_score, roc_auc_score
